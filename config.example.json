@@ -1,0 +1,44 @@
+{
+  "schedule_hours": 24,
+  "state_db": "./watcher_state.db",
+  "user_agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0 Safari/537.36",
+  "notifications": {
+    "smtp": {
+      "host": "smtp.gmail.com",
+      "port": 587,
+      "username": "your-email@gmail.com",
+      "password": "app-password",
+      "from_email": "your-email@gmail.com",
+      "to": ["your-email@gmail.com", "spouse-email@gmail.com"]
+    }
+  },
+  "searches": [
+    {
+      "name": "RAV4 Hybrid",
+      "url": "https://www.autotempest.com/results?make=toyota&model=rav4hybrid",
+      "target_price": 30000,
+      "max_price": 34000,
+      "max_mileage": 50000,
+      "min_deal_score": 70,
+      "great_price_discount_pct": 12
+    },
+    {
+      "name": "Honda CR-V",
+      "url": "https://www.autotempest.com/results?make=honda&model=cr-v",
+      "target_price": 26000,
+      "max_price": 30000,
+      "max_mileage": 70000,
+      "min_deal_score": 68,
+      "great_price_discount_pct": 10
+    },
+    {
+      "name": "Mazda CX-5",
+      "url": "https://www.autotempest.com/results?make=mazda&model=cx-5",
+      "target_price": 25000,
+      "max_price": 29000,
+      "max_mileage": 65000,
+      "min_deal_score": 68,
+      "great_price_discount_pct": 10
+    }
+  ]
+}
