@@ -14,31 +14,34 @@
   },
   "searches": [
     {
-      "name": "RAV4 Hybrid",
-      "url": "https://www.autotempest.com/results?make=toyota&model=rav4hybrid",
-      "target_price": 30000,
-      "max_price": 34000,
-      "max_mileage": 50000,
-      "min_deal_score": 70,
-      "great_price_discount_pct": 12
-    },
-    {
-      "name": "Honda CR-V",
-      "url": "https://www.autotempest.com/results?make=honda&model=cr-v",
-      "target_price": 26000,
-      "max_price": 30000,
-      "max_mileage": 70000,
+      "name": "Toyota RAV4 AWD/4WD",
+      "url": "https://www.autotempest.com/results?zip=80210&radius=50&make=toyota&model=allrav4&minprice=14000&maxprice=28000&minmiles=30000&maxmiles=90000&drive=4wd%2Cawd&title=clean",
+      "target_price": 20000,
+      "max_price": 28000,
+      "max_mileage": 90000,
       "min_deal_score": 68,
       "great_price_discount_pct": 10
+      "steal_price_discount_pct": 20
     },
     {
-      "name": "Mazda CX-5",
-      "url": "https://www.autotempest.com/results?make=mazda&model=cx-5",
-      "target_price": 25000,
-      "max_price": 29000,
-      "max_mileage": 65000,
+      "name": "Subaru Forester",
+      "url": "https://www.autotempest.com/results?zip=80210&radius=50&make=subaru&model=forester&minprice=14000&maxprice=24000&minmiles=30000&maxmiles=90000",
+      "target_price": 16000,
+      "max_price": 24000,
+      "max_mileage": 90000,
       "min_deal_score": 68,
       "great_price_discount_pct": 10
+      "steal_price_discount_pct": 20
+    },
+    {
+      "name": "Honda CR-V AWD/4WD",
+      "url": "https://www.autotempest.com/results?zip=80210&radius=50&make=honda&model=crv&minprice=14000&maxprice=24000&minmiles=30000&maxmiles=90000&drive=awd%2C4wd&title=clean",
+      "target_price": 19000,
+      "max_price": 24000,
+      "max_mileage": 90000,
+      "min_deal_score": 68,
+      "great_price_discount_pct": 10
+      "steal_price_discount_pct": 20
     }
   ]
 }
