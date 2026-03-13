@@ -1,3 +1,4 @@
+from playwright.sync_api import sync_playwright
 #!/usr/bin/env python3
 import argparse
 import json
@@ -55,9 +56,28 @@ def init_db(path: str) -> sqlite3.Connection:
 
 
 def fetch_html(url: str, user_agent: str) -> str:
-    req = Request(url, headers={"User-Agent": user_agent})
-    with urlopen(req, timeout=30) as resp:  # noqa: S310
-        return resp.read().decode("utf-8", errors="ignore")
+
+    with sync_playwright() as p:
+
+        browser = p.chromium.launch(headless=True)
+
+        context = browser.new_context(
+            user_agent=user_agent,
+            viewport={"width": 1280, "height": 900}
+        )
+
+        page = context.new_page()
+
+        page.goto(url, timeout=60000)
+
+        # allow dynamic listings to load
+        page.wait_for_timeout(5000)
+
+        html = page.content()
+
+        browser.close()
+
+        return html
 
 
 def _normalize_price(value: Any) -> int | None:
@@ -244,7 +264,26 @@ def compute_seller_quality(listing: dict[str, Any]) -> tuple[int, str]:
 
 
 def is_great_deal(listing: Listing, search_cfg: dict[str, Any]) -> bool:
+
     min_deal_score = search_cfg.get("min_deal_score", 70)
+    target_price = search_cfg.get("target_price")
+
+    if listing.deal_score >= min_deal_score:
+        return True
+
+    if target_price and listing.price is not None:
+
+        pct_below = (target_price - listing.price) / target_price * 100
+
+        # steal deal
+        if pct_below >= search_cfg.get("steal_price_discount_pct", 20):
+            return True
+
+        # normal good deal
+        if pct_below >= search_cfg.get("great_price_discount_pct", 10):
+            return True
+
+    return False    min_deal_score = search_cfg.get("min_deal_score", 70)
     if listing.deal_score >= min_deal_score:
         return True
 
