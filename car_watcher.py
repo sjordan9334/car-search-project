@@ -388,7 +388,8 @@ def run_monitor(config: dict[str, Any]) -> int:
 
             if is_great_deal(listing, search):
                 try:
-                    send_email_alert(smtp_cfg, f"🚗 Great deal found: {listing.search_name}", format_alert(listing))
+                    subject = f"🚗 ${listing.price} {listing.title}"
+                    send_email_alert(smtp_cfg, subject, format_alert(listing))     
                     total_alerts += 1
                 except Exception as exc:  # noqa: BLE001
                     logging.exception("Failed to send alert for %s: %s", listing.listing_id, exc)
